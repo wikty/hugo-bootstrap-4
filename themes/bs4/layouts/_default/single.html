@@ -1,0 +1,21 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+  <div>
+    <article>
+      <header>
+        <p class="text-muted">
+          {{ humanize .Section | upper  }}
+        </p>
+        <h1>
+          {{ .Title }}
+        </h1>
+      </header>
+      <div>
+        {{ .Content }}
+      </div>
+    </article>
+    <aside>
+      {{ partial "sidebar.html" . }}
+    </aside>
+  </div>
+{{ end }}

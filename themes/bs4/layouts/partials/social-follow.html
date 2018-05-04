@@ -1,0 +1,37 @@
+<!-- TODO: Add follow intents where available TODO: Revisit color and hover color -->
+{{ $icon_size := "32px" }}
+{{ with .Site.Params.facebook }}
+  <a href="{{ . }}" class="facebook" title="Facebook link">
+    {{ partial "resources/svg/facebook.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.twitter }}
+  <a href="{{ . }}" class="twitter" title="Twitter link">
+    {{ partial "resources/svg/twitter.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.instagram }}
+  <a href="{{ . }}" class="instagram" title="Instagram link">
+    {{ partial "resources/svg/instagram.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.youtube }}
+  <a href="{{ . }}" class="youtube" title="Youtube link">
+    {{ partial "resources/svg/youtube.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.linkedin }}
+  <a href="{{ . }}" class="linkedin" title="LinkedIn link">
+    {{ partial "resources/svg/linkedin.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.github }}
+  <a href="{{ . }}" class="github" title="Github link">
+    {{ partial "resources/svg/github.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
+{{ with .Site.Params.weibo }}
+  <a href="{{ . }}" class="weibo" title="Weibo link">
+    {{ partial "resources/svg/weibo.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}

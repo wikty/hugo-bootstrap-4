@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <article>
+    <div>
+      {{ .Content }}
+    </div>
+  </article>
+  <div>
+    {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
+    <section>
+      {{ range  $paginator.Pages }}
+        <div>
+          {{ partial "summary.html" . }}
+        </div>
+      {{ end }}
+    </section>
+  {{/* Hugo internal pagination */}}
+  {{ template "_internal/pagination.html" . }}
+  </div>
+{{ end }}

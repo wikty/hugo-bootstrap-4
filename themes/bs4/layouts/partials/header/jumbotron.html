@@ -1,0 +1,7 @@
+{{ block "navbar" . }}{{ partial "navbar.html" . }}{{ end }}
+<div id="header-lead" class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">{{ .Title | default .Site.Title }}</h1>
+    <p class="lead">{{ .Params.description | default .Site.Params.description }}</p>
+  </div>
+</div>

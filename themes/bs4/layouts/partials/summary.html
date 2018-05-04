@@ -1,0 +1,29 @@
+{{ $featured_image := .Params.featured_image }}
+<article>
+  <div>
+    <div>
+      {{ if .Params.featured_image }}
+          {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+        {{ $featured_image := (trim $featured_image "/") | absURL }}
+        <div>
+          <a href="{{.URL}}">
+            <img src="{{ $featured_image }}" class="img" alt="image from {{ .Title }}">
+          </a>
+        </div>
+      {{ end }}
+      <div>
+        <h1>
+          <a href="{{.URL | relLangURL }}">
+            {{ .Title }}
+          </a>
+        </h1>
+        <div>
+          {{ .Summary }}
+        </div>
+        <a href="{{.URL | relLangURL }}">
+          {{ i18n "Readmore" . }}
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

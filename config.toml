@@ -1,0 +1,75 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "bs4"
+
+[params]
+  ####
+  # Global
+  ####
+  # the favicon url
+  favicon = "favicon.ico"
+  description = "Life is a playground or nothing."
+  # Please set enviorment variable HUGO_ENV="production" or change the following configuration when you deploy your site.
+  env = "dev"
+  # Page header: jumbotron, hero, carousel
+  page_header = "carousel"
+  ###
+  # Contact Information
+  ###
+  facebook = "http://facebook"
+  twitter = "http://twitter"
+  instagram = "http://instagram"
+  youtube = "http://youtubu"
+  linkedin = "http://linkedin"
+  github = "http://github.com"
+  weibo = "http://weibo"
+  email = "nobody@example.com"
+  email1 = "nobody@example.com"
+  email2 = "anotherbody@example.com"
+  ###
+  # Style
+  ###
+  # set page body element style classes, spearated by space  
+  body_class = ""
+  # The Page Hero's font-color, background-color and image
+  # https://getbootstrap.com/docs/4.1/utilities/colors/
+  hero_font_color = "white"
+  hero_bg_color = "dark"
+  hero_bg_img = "img/home-bg.jpg"
+  # responsive breakpoint: xs, sm, md, lg, xl
+  navbar_breakpoint = "md"
+  # background color mode: light, dark
+  navbar_font_color = "white"
+  navbar_bg_mode = "light"
+  navbar_bg_color = "dark"
+  navbar_brand_img = ""
+  ###
+  # Javascript/CSS static resouces
+  ###
+  # js
+  fixie = false
+  mathjax = false
+  pangu = false
+  typekit = false
+  fontawesome = false
+  # css
+  simplelineicons = false
+  devicons = false
+  ####
+  # Homepage
+  ####
+  # sections are listed in homepage that defaults to the section with the most pages.  
+  mainSections = ["posts", "about"]
+  # show how many recent posts in of each section is listed in homepage
+  recent_posts_number = 10
+  ####
+  # Singlepage
+  ####
+  # list how many related pages
+  related_posts_number = 6
+  # page structure components
+  include_toc = true
+  include_share = true
+  include_comment = true
+  include_sidebar = false

@@ -1,0 +1,176 @@
+body {
+    color: #212529;
+}
+
+/* Reset */
+p {
+  line-height: 1.5;
+  margin: 30px 0;
+}
+
+p a {
+  text-decoration: underline;
+}
+
+a {
+  /*color: #007bff;*/
+  color: #212529;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+a:focus, a:hover {
+  color: #0085A1;
+}
+
+blockquote {
+  font-style: italic;
+  color: #868e96;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
+}
+
+::selection {
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
+}
+
+img::selection {
+  color: #fff;
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+
+
+/* Hero Header */
+.hero-container {
+  display: block;
+  position: relative;
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: #868e96;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.hero-container .overlay {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+.hero-container .heading {
+  padding: 200px 0 150px;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero-container .heading {
+    padding: 200px 0;
+  }
+}
+
+/* CUSTOMIZE THE CAROUSEL */
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+
+/* post card */
+.posts-card {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+@media (min-width: 768px) {
+  .posts-card {
+    height: 250px;
+  }
+}
+
+.posts-card .card-img-right {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 35%;
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+
+/* The social icons filled color */
+
+.facebook, .twitter, .instagram, .youtube, .github, .linkedin, .weibo {
+  fill: #BABABA;
+}
+
+.facebook:hover {
+  fill: #3b5998;
+}
+
+.twitter:hover {
+  fill: #1da1f2;
+}
+
+.instagram:hover {
+  fill: #e1306c;
+}
+
+.youtube:hover {
+  fill: #cd201f;
+}
+
+.github:hover {
+  fill: #6cc644;
+}
+
+.linkedin:hover {
+  fill: #0077b5;
+}
+
+.weibo:hover {
+  fill: #d8261f;
+}

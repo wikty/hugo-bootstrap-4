@@ -1,0 +1,53 @@
+  <nav id="header-navbar" class="navbar navbar-expand-{{ $.Param "navbar_breakpoint" | default "md" }} navbar-{{ $.Param "navbar_bg_mode"  | default "dark"  }} bg-{{ $.Param "navbar_bg_color"  | default "dark" }} text-{{ $.Param "navbar_font_color"  | default "white" }} fixed-top" >
+    <a class="navbar-brand text-{{ $.Param "navbar_font_color"  | default "white" }}" href="{{ .Site.BaseURL }}">
+      {{ if $.Param "navbar_brand_img" }}
+      <img src="{{ $.Param "navbar_brand_img" }}" width="30" height="30" alt="Site Brand" class="d-inline-block align-top">
+      {{ end }}
+      {{ .Site.Title }}
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-navbar-navs" aria-controls="header-navbar-navs" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-navbar-navs">
+      <ul class="navbar-nav mr-auto">
+      {{/* List site main menu's entry on the navigation bar */}}
+      {{ if .Site.Menus.main }}
+        {{ $current_url := .URL }}
+        {{ range .Site.Menus.main }}
+        {{ if eq $current_url .URL }}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ .URL | absLangURL }}" title="{{ .Name }} page">
+            {{ .Name }} <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        {{ else }}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ .URL | absLangURL }}" title="{{ .Name }} page">
+            {{ .Name }}
+          </a>
+        </li>
+        {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Show page's multiLingual version link(except the current language version) */}}
+      {{ if .IsTranslated }}
+        {{ range .Translations }}
+        <li class="nav-item">
+          {{/* Don't use relLangURL or absLangURL to convert the .URL */}}
+          <a class="nav-link" href="{{ .URL }}" title="{{ .Lang | upper }} version page">
+            {{ .Lang | upper }}
+          </a>
+        </li>
+        {{ end }}
+      {{ end }}
+      </ul>
+
+      <form id="header-navbar-form" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg><span class="sr-only">Search</span></button>
+      </form>
+    </div>
+  </nav>

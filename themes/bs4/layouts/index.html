@@ -1,0 +1,60 @@
+{{/* .Kind = "home" */}}
+{{ define "main" }}
+<div class="container">
+  <div class="row">
+    <article class="col mx-auto text-center text-muted">
+      {{ .Content }}
+    </article>
+  </div>
+  {{/* Range through all of main sections' recent articles */}}
+  {{ $mainSections := .Site.Params.mainSections | default (slice "posts") }}
+  {{ $n_posts := .Site.Params.recent_posts_number | default 10 }}
+  {{ range $mainSections }}
+  
+  {{ $section_name := . }}
+  {{ $section_pages := where $.Site.RegularPages "Section" $section_name }}
+  {{ $section_pages_count := len $section_pages }}
+  {{/* Display section that has least one page */}}
+  
+  {{ if ge $section_pages_count 1 }}
+  <div class="row">
+    <div class="col">
+    {{/* Use $section_name to get the section index page. Use "with" to only show it if it exists */}}
+    {{ with $.Site.GetPage "section" $section_name }}
+      <h3 class="pb-3 mb-4 font-italic border-bottom">
+        {{ i18n "Recent" }} {{ .Title }}
+      </h3>
+    {{ end }}
+      
+    {{/* Range through the first $n_posts items of the section */}}
+      <section>
+        {{ range (first $n_posts $section_pages) }}
+          {{ partial "posts/card.html" . }}
+        {{ end }}
+      </section>
+      
+    {{/* If there are too many posts, range through the next four after the initial $n_posts items and display a link to the section index page */}}
+    {{ if ge $section_pages_count (add $n_posts 1) }}
+      <section>
+        <h1>{{ i18n "More" . }}</h1>
+        {{/* Nest the requirements, "after" then "first" on the outside */}}
+        {{ range (first 4 (after $n_posts $section_pages)) }}
+          <h2>
+            <a href="{{ .URL | absLangURL }}">
+              {{ .Title }}
+            </a>
+          </h2>
+        {{ end }}
+
+        {{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
+        {{ with $.Site.GetPage "section" $section_name }}
+          <a href="{{ .URL | absLangURL }}">{{ i18n "All" . }} {{.Title }}</a>
+        {{ end }}
+      </section>
+    {{ end }}
+    </div>
+  </div>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}
