@@ -2,11 +2,11 @@
 other = "Translations"
 
 [WordCount]
-other = "There are {{ .WordCount }} words."
+other = "{{ .WordCount }} words"
 
 [ReadingTime]
-one = "One minute read"
-other = "{{.Count}} minutes read"
+one = "One minute"
+other = "{{ .Count }} minutes"
 
 [Recent]
 other = "Recent"
@@ -28,4 +28,16 @@ other = "Content"
 
 [Related]
 other = "Related"
+
+[Archives]
+other = "Archives"
+
+[Socials]
+other = "Socials"
+
+[Categories]
+other = "Categories"
+
+[Tags]
+other = "Tags"
 

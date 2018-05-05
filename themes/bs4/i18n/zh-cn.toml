@@ -2,11 +2,11 @@
 other = "翻译"
 
 [WordCount]
-other = "这篇文章有 {{ .WordCount }} 个字"
+other = "{{ .WordCount }} 个字"
 
 [ReadingTime]
-one = "大概需要阅读一分钟"
-other = "大概需要阅读 {{.Count}} 分钟"
+one = "用时一分钟"
+other = "用时 {{ .Count }} 分钟"
 
 [Recent]
 other = "最近"
@@ -28,3 +28,15 @@ other = "正文"
 
 [Related]
 other = "相关文章"
+
+[Archives]
+other = "归档"
+
+[Socials]
+other = "社交账户"
+
+[Categories]
+other = "类别"
+
+[Tags]
+other = "标签"
