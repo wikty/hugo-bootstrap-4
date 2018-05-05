@@ -14,8 +14,7 @@
 {{ end }}
 
 <div class="media mb-2">
-  <img style="width: 30%;" class="align-self-start mr-3 box-shadow" src="{{ with .Scratch.Get "$img_url" }}{{ . }}{{ end }}" alt="Featured image of {{$title}}">
-  <div style="width: 70%;" class="media-body">
+  <div class="w-75 media-body">
     <h3 class="mt-0">
       <a class="text-dark" href="{{$url | relLangURL}}">{{$title}}</a>
     </h5>
@@ -23,4 +22,7 @@
     <p class="my-0 py-0"><small class="text-muted font-italic font-weight-light">{{ .Date.Format "15:04:05, Monday, January 2, 2006" }}</small></p>
     <p class="mt-0"><a href="{{$url | relLangURL}}">{{ i18n "Readmore" . }}</a></p>
   </div>
+  {{ with .Scratch.Get "$img_url" }}
+  <img class="w-25 align-self-start ml-3 shadow rounded" src="{{ . }}" alt="Featured image of {{$title}}">
+  {{ end }}
 </div>
