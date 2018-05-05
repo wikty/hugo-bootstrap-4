@@ -2,21 +2,57 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "bs4"
+# metaDataFormat = "toml"
 
 [params]
-  ####
-  # Global
-  ####
-  # the favicon url
-  favicon = "favicon.ico"
-  description = "Life is a playground or nothing."
   # Please set enviorment variable HUGO_ENV="production" or change the following configuration when you deploy your site.
   env = "dev"
+  
+  # The favicon icon's url
+  favicon = "favicon.ico"
+  
+  # The Description for your site
+  description = "Life is a playground or nothing."
+  
   # Page header: jumbotron, hero, carousel
-  page_header = "carousel"
-  ###
+  page_header = "hero"
+  
+  # The page body element style classes, spearated by space  
+  body_class = ""
+  
+  # Define main sections list
+  main_sections = ["posts", "about"]
+  
+  # Show how many recent posts of each main section
+  recent_posts_number = 10
+  
+  # load 3rd party javascript libaray
+  fixie = false
+  mathjax = false
+  pangu = false
+  typekit = false
+  fontawesome = false
+  holder = false
+  clipboard = true
+
+  # load 3rd party css library
+  simplelineicons = false
+  devicons = false
+
+  # page featured image's url
+  featured_img = ""
+
+  # list how many related pages
+  related_posts_number = 6
+  
+  # page components
+  include_toc = true
+  include_share = true
+  include_comment = true
+  include_sidebar = true
+  
   # Contact Information
-  ###
+  [params.contact]
   facebook = "http://facebook"
   twitter = "http://twitter"
   instagram = "http://instagram"
@@ -27,49 +63,43 @@ theme = "bs4"
   email = "nobody@example.com"
   email1 = "nobody@example.com"
   email2 = "anotherbody@example.com"
-  ###
-  # Style
-  ###
-  # set page body element style classes, spearated by space  
-  body_class = ""
-  # The Page Hero's font-color, background-color and image
-  # https://getbootstrap.com/docs/4.1/utilities/colors/
-  hero_font_color = "white"
-  hero_bg_color = "dark"
-  hero_bg_img = "img/home-bg.jpg"
+
+  # Summary: the summary template for each section
+  [params.summary]
+  posts = "media"
+
+  # Navbar Component
+  [params.navbar]
+  # element id
+  id = "header-navbar"
   # responsive breakpoint: xs, sm, md, lg, xl
-  navbar_breakpoint = "md"
+  breakpoint = "md"
+  # https://getbootstrap.com/docs/4.1/utilities/colors/
+  color = "white"
+  bg_color = "dark"
+  # https://getbootstrap.com/docs/4.1/utilities/borders/#border-color
+  bottom_border_color = ""
   # background color mode: light, dark
-  navbar_font_color = "white"
-  navbar_bg_mode = "light"
-  navbar_bg_color = "dark"
-  navbar_brand_img = ""
-  ###
-  # Javascript/CSS static resouces
-  ###
-  # js
-  fixie = false
-  mathjax = false
-  pangu = false
-  typekit = false
-  fontawesome = false
-  # css
-  simplelineicons = false
-  devicons = false
-  ####
-  # Homepage
-  ####
-  # sections are listed in homepage that defaults to the section with the most pages.  
-  mainSections = ["posts", "about"]
-  # show how many recent posts in of each section is listed in homepage
-  recent_posts_number = 10
-  ####
-  # Singlepage
-  ####
-  # list how many related pages
-  related_posts_number = 6
-  # page structure components
-  include_toc = true
-  include_share = true
-  include_comment = true
-  include_sidebar = false
+  bg_mode = "light"
+  # Brand image
+  brand_img = ""
+
+  # Hero header Component
+  [params.hero]
+  # element id
+  id = "header-lead"
+  color = "white"
+  bg_color = "dark"
+  
+  # Jumbotron header Component
+  [params.jumbotron]
+  id = "header-lead"
+  color = ""
+  bg_color = ""
+
+  # Carousel header Component
+  [params.carousel]
+  id = "header-lead"
+  fade = false
+  # specify the section'll be showed on carousel
+  section = "posts"

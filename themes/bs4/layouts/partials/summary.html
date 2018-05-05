@@ -1,29 +1,5 @@
-{{ $featured_image := .Params.featured_image }}
-<article>
-  <div>
-    <div>
-      {{ if .Params.featured_image }}
-          {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
-        {{ $featured_image := (trim $featured_image "/") | absURL }}
-        <div>
-          <a href="{{.URL}}">
-            <img src="{{ $featured_image }}" class="img" alt="image from {{ .Title }}">
-          </a>
-        </div>
-      {{ end }}
-      <div>
-        <h1>
-          <a href="{{.URL | relLangURL }}">
-            {{ .Title }}
-          </a>
-        </h1>
-        <div>
-          {{ .Summary }}
-        </div>
-        <a href="{{.URL | relLangURL }}">
-          {{ i18n "Readmore" . }}
-        </a>
-      </div>
-    </div>
-  </div>
-</article>
+{{ $section_name := .Section }}
+{{ $section_summary := (index $.Site.Params.summary $section_name) | default "media" }}
+{{ $section_summary_tpl := (printf "widgets/summary/%s.html" $section_summary) }}
+
+{{ partial $section_summary_tpl . }}

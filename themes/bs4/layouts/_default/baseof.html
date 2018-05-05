@@ -35,6 +35,9 @@
       <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
+    {{/* Fix IE */}}
+    {{ partial "resources/scripts/fixie.html" . }}
+
     {{ partial "site/seo.html" . }}
 
     {{ partial "site/analytics" . }}
@@ -45,7 +48,7 @@
   {{/* To avoid fixed-top navbar override body, top bottom padding it 3rem */}}
   <body class="py-5 {{ $.Param "body_class"  | default ""}} {{ with getenv "HUGO_ENV" }}{{ . }}{{ end }}">
   
-    <header id="header" class="{{ .Site.Params.page_header }}">
+    <header id="header">
     {{ block "header" . }}{{ partial "site/header.html" .}}{{ end }}
     </header>
 
@@ -57,13 +60,14 @@
     {{ block "footer" . }}{{ partial "site/footer.html" . }}{{ end }}
     </footer>
 
-    <!-- Bootstrap Dependencies: jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Required: Bootstrap dependencies library, jQuery first, then Popper.js, then Bootstrap JS -->
     {{ partial "resources/scripts/jquery.html" . }}
     {{ partial "resources/scripts/popper.html" . }}
     {{ partial "resources/scripts/bootstrap.html" . }}
-
+    <!-- Optional: 3rd party javascript library -->
+    {{ partial "resources/scripts/jquery.qrcode.html" . }}
     {{ block "scripts" . }}{{ partial "site/scripts.html" . }}{{ end }}
-
+    <!-- Custom javascript -->
     <script src="{{ "js/main.js" | relURL }}"></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
----
-title:  "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
-categories: []
-tags: []
-hero_bg_img: ""
-description: ""
-draft: true
----
++++
+title =  "{{ replace .TranslationBaseName "-" " " | title }}"
+date = {{ .Date }}
+categories = []
+tags = []
+featured_img = ""
+description = ""
+draft = true
++++

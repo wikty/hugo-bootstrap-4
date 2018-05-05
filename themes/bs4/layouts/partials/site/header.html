@@ -1,8 +1,4 @@
-{{ $mode := ($.Param "page_header" | default "hero") }}
-{{ if eq $mode "hero" }}
-  {{ partial "header/hero.html" . }}
-{{ else if eq $mode "carousel" }}
-  {{ partial "header/carousel.html" . }}
-{{ else if eq $mode "jumbotron" }}
-  {{ partial "header/jumbotron.html" . }}
-{{ end }}
+{{ $header := ($.Param "page_header" | default "hero") }}
+{{ $header_tpl := (printf "widgets/header/%s.html" $header) }}
+
+{{ partial $header_tpl . }}

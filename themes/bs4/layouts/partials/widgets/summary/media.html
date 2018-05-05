@@ -1,0 +1,13 @@
+{{ $title := .Title }}
+{{ $url :=  .URL | relLangURL }}
+<div class="media">
+  <img style="width: 30%;" class="align-self-start mr-3" src="{{ with .Params.featured_img }}{{ . }}{{ end }}" alt="Featured image of {{$title}}">
+  <div style="width: 70%;" class="media-body">
+    <h3 class="mt-0">
+      <a class="text-dark" href="{{$url}}">{{$title}}</a>
+    </h5>
+    <p>{{ .Summary }}</p>
+    <p class="my-0 py-0"><small class="text-muted font-italic font-weight-light">{{ .Date.Format "15:04:05, Monday, January 2, 2006" }}</small></p>
+    <p class="mt-0"><a href="{{$url}}">{{ i18n "Readmore" . }}</a></p>
+  </div>
+</div>

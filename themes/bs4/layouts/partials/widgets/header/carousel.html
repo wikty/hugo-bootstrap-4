@@ -1,0 +1,50 @@
+{{ block "navbar" . }}{{ partial "navbar.html" . }}{{ end }}
+
+{{ $id := $.Param "carousel.id" | default "header-lead" }}
+{{ $fade := $.Param "carousel.fade" | default false }}
+{{ $section := $.Param "carousel.section" | default "posts" }}
+{{ $section_pages := where $.Site.RegularPages "Section" $section }}
+{{ $section_pages := where $section_pages "Params.featured_img" "!=" nil }}
+{{ $section_pages := where $section_pages "Params.featured_img" "!=" "" }}
+
+<div id="{{$id}}" class="carousel slide {{if $fade}}carousel-fade{{end}}" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {{ range $index, $page := $section_pages }}
+    {{ if eq $index 0 }}
+    <li data-target="#{{$id}}" data-slide-to="{{$index}}" class="active"></li>
+    {{ else }}
+    <li data-target="#{{$id}}" data-slide-to="{{$index}}" class="active"></li>
+    {{ end }}
+    {{ end }}
+  </ol>
+  <div class="carousel-inner">
+    {{ range $index, $page := $section_pages }}
+    {{ $bg_img := (trim $page.Params.featured_img "/") | absURL }}
+    {{ if eq $index 0 }}
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{$bg_img}}" alt="{{ $page.Title }}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ $page.Title }}</h5>
+        <p>{{ $page.Params.description }}</p>
+      </div>
+    </div>
+    {{ else }}
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{$bg_img}}" alt="{{ $page.Title }}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ $page.Title }}</h5>
+        <p>{{ $page.Params.description }}</p>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+  <a class="carousel-control-prev" href="#{{$id}}" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#{{$id}}" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

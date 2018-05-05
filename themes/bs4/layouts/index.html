@@ -2,56 +2,66 @@
 {{ define "main" }}
 <div class="container">
   <div class="row">
-    <article class="col mx-auto text-center text-muted">
+    <article class="col mx-auto text-center text-muted lead">
       {{ .Content }}
     </article>
   </div>
-  {{/* Range through all of main sections' recent articles */}}
-  {{ $mainSections := .Site.Params.mainSections | default (slice "posts") }}
-  {{ $n_posts := .Site.Params.recent_posts_number | default 10 }}
-  {{ range $mainSections }}
   
+  {{/* Range through all of main sections' recent articles */}}
+  {{ $main_sections := .Site.Params.main_sections | default (slice "posts") }}
+  {{ $n_posts := .Site.Params.recent_posts_number | default 10 }}
+  
+  {{ range $main_sections }}
   {{ $section_name := . }}
   {{ $section_pages := where $.Site.RegularPages "Section" $section_name }}
   {{ $section_pages_count := len $section_pages }}
-  {{/* Display section that has least one page */}}
   
+  {{/* Display section that has least one page */}}
   {{ if ge $section_pages_count 1 }}
   <div class="row">
     <div class="col">
-    {{/* Use $section_name to get the section index page. Use "with" to only show it if it exists */}}
-    {{ with $.Site.GetPage "section" $section_name }}
+      {{/* Use $section_name to get the section index page. Use "with" to only show it if it exists */}}
+      {{ $section := $.Site.GetPage "section" $section_name }}
+      {{ if $section }}
       <h3 class="pb-3 mb-4 font-italic border-bottom">
-        {{ i18n "Recent" }} {{ .Title }}
+        {{ i18n "Recent" }} {{ $section.Title }}
       </h3>
-    {{ end }}
-      
-    {{/* Range through the first $n_posts items of the section */}}
+      {{ else }}
+      <h3 class="pb-3 mb-4 font-italic border-bottom"></h3>
+      {{ end }}
       <section>
+        {{/* Range through the first $n_posts items of the section */}}
         {{ range (first $n_posts $section_pages) }}
-          {{ partial "posts/card.html" . }}
+          {{ partial "summary.html" . }}
         {{ end }}
       </section>
       
-    {{/* If there are too many posts, range through the next four after the initial $n_posts items and display a link to the section index page */}}
-    {{ if ge $section_pages_count (add $n_posts 1) }}
+      {{/* If there are too many posts, range through the next four after the initial $n_posts items and display a link to the section index page */}}
+      {{ if ge $section_pages_count (add $n_posts 1) }}
       <section>
-        <h1>{{ i18n "More" . }}</h1>
+        <h4 class="pb-1 mb-1 font-italic">
+        {{ i18n "More" . }}
+        </h4>
+        
+        <ul class="list-unstyled">
         {{/* Nest the requirements, "after" then "first" on the outside */}}
         {{ range (first 4 (after $n_posts $section_pages)) }}
-          <h2>
+          <li>
             <a href="{{ .URL | absLangURL }}">
-              {{ .Title }}
+            {{ .Title }}
             </a>
-          </h2>
+          </li>
         {{ end }}
+        </ul>
 
         {{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
         {{ with $.Site.GetPage "section" $section_name }}
-          <a href="{{ .URL | absLangURL }}">{{ i18n "All" . }} {{.Title }}</a>
+        <h4 class="pb-1 mb-1 font-italic">
+          <a href="{{ .URL | absLangURL }}">{{ i18n "All" . }} {{ .Title }}</a>
+        </h4>
         {{ end }}
       </section>
-    {{ end }}
+      {{ end }}
     </div>
   </div>
   {{ end }}

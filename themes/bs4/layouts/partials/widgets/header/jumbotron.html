@@ -1,0 +1,12 @@
+{{ block "navbar" . }}{{ partial "navbar.html" . }}{{ end }}
+
+{{ $id := $.Param "jumbotron.id" | default "header-lead" }}
+{{ $color := $.Param "jumbotron.color" | default "" }}
+{{ $bg_color := $.Param "jumbotron.bg_color" | default "" }}
+
+<div id="{{$id}}" class="jumbotron jumbotron-fluid text-center {{with $color}}text-{{.}}{{end}} {{with $bg_color}}bg-{{.}}{{end}}">
+  <div class="container">
+    <h1 class="display-4">{{ .Title | default .Site.Title }}</h1>
+    <p class="lead">{{ $.Param "description" }}</p>
+  </div>
+</div>

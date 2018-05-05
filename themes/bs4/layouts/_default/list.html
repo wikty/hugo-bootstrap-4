@@ -1,19 +1,26 @@
 {{ define "main" }}
-  <article>
-    <div>
+<div class="container">
+  <div class="row">
+    <article class="col mx-auto text-center text-muted lead">
       {{ .Content }}
-    </div>
-  </article>
-  <div>
+    </article>
+  </div>
+  
+  <div class="row">
     {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
-    <section>
+    <section class="col">
       {{ range  $paginator.Pages }}
-        <div>
+        <div class="mb-2">
           {{ partial "summary.html" . }}
         </div>
       {{ end }}
     </section>
-  {{/* Hugo internal pagination */}}
-  {{ template "_internal/pagination.html" . }}
+  </div>
+
+  <div class="row">
+    <div class="col mx-auto">
+    {{/* Hugo internal pagination */}}
+    {{ template "_internal/pagination.html" . }}
+    </div>
   </div>
 {{ end }}

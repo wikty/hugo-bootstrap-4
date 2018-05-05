@@ -1,0 +1,20 @@
+{{ block "navbar" . }}{{ partial "navbar.html" . }}{{ end }}
+
+{{ $id := $.Param "hero.id" | default "header-lead" }}
+{{ $color := $.Param "hero.color" | default "white" }}
+{{ $bg_color := $.Param "hero.bg_color" | default "dark" }}
+{{ $bg_img := $.Param "featured_img" | default "" }}
+
+<div id="{{$id}}" class="hero-container bg-{{$bg_color}}" {{ with $bg_img }}style="background-image: url('{{ (trim . "/") | absURL }}');"{{ end }}>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="heading text-center text-{{$color}}">
+          <h1 class="display-4 font-weight-normal">{{ .Title | default .Site.Title }}</h1>
+          <p class="lead font-weight-normal">{{ $.Param "description" }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
