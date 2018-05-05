@@ -1,18 +1,29 @@
 {{ $title := .Title }}
-{{ $url :=  .URL | relLangURL }}
+{{ $url :=  .URL }}
 {{ $color := (index (shuffle (slice "primary" "secondary" "success" "danger" "info" "warning"))  0) }}
+
+{{ $img_url := .Params.featured_img | default "" }}
+
+{{/* Note: Variables defined inside if conditionals and similar are not visible on the outside. Please use .Scratch instead. */}}
+{{ if $img_url }}
+  {{ if hasPrefix $img_url "./" }}
+    {{ $suffix := index (last 1 (split $url "/")) 0 }}
+    {{ .Scratch.Set "$img_url" (delimit (slice (strings.TrimSuffix $suffix $url) (strings.TrimLeft "." $img_url )) "") }}
+  {{ end }}
+  {{ .Scratch.Set "$img_url" (.Scratch.Get "$img_url" | absURL) }}
+{{ end }}
 
 <div class="posts-card card flex-md-row mb-4">
   <div class="card-body d-flex flex-column align-items-start">
     <strong class="d-inline-block mb-2 text-{{$color}}">{{ if .Params.categories }}{{ index .Params.categories 0 }}{{ end }}</strong>
     <h3 class="mb-0">
-      <a class="text-dark" href="{{$url}}">{{ $title }}</a>
+      <a class="text-dark" href="{{$url | relLangURL}}">{{ $title }}</a>
     </h3>
     <div class="mb-1 text-muted">{{ .Date.Format "15:04:05, Monday, January 2, 2006" }}</div>
     <p class="card-text mb-auto">{{ .Summary }}</p>
-    <a href="{{$url}}">{{ i18n "Readmore" . }}</a>
+    <a href="{{$url | relLangURL}}">{{ i18n "Readmore" . }}</a>
   </div>
-  {{ with .Params.featured_img }}
-  <a href="{{$url}}"><img class="card-img-right d-none d-lg-block" src="{{ . | absURL }}" alt="Featured image of {{ $title }}"></a>
+  {{ with .Scratch.Get "$img_url" }}
+  <img class="card-img-right d-none d-lg-block" src="{{ . }}" alt="Featured image of {{ $title }}">
   {{ end }}
 </div>
