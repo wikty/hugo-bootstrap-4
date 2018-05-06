@@ -28,7 +28,7 @@ theme = "bs4"
   recent_posts_number = 10
   
   # load 3rd party javascript libaray
-  fixie = false
+  fixie = true
   mathjax = false
   pangu = false
   typekit = false

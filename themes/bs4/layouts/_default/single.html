@@ -1,15 +1,14 @@
 {{/* This is a fallback for all of the single pages */}}
 {{/* Regular content pages from any sections */}}
 {{/* .Kind = "page" */}}
-{{ define "header" }}{{ partial "navbar.html" . }}{{ end }}
 {{ define "main" }}
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-8">
-          {{ partial "content.html" . }}
+          {{ partial "page/content.html" . }}
         </div>
         <div class="col-md-4">
-          {{ partial "sidebar.html" . }}
+          {{ partial "page/sidebar.html" . }}
         </div>
       </div>
     </div>

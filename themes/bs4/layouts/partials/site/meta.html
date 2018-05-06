@@ -1,0 +1,17 @@
+    <meta charset="utf-8">
+    {{/* IE compatiable adaptation  */}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {{/* Device adaptation(https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag) */}}
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    {{/* For viewport disabled mobile */}}
+    <meta name="HandheldFriendly" content="True">
+    {{/* For outdated IE */}}
+    <meta name="MobileOptimized" content="320">
+    {{/* Insert hugo generator meta tag */}}
+    {{ .Hugo.Generator }}
+    {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
+    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    {{ else }}
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    {{ end }}
