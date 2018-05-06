@@ -1,0 +1,36 @@
+        <section>
+
+          <header>
+            <h2 class="pb-3 mb-4 font-italic border-bottom">{{ .Title }}<small class="text-muted"> / {{ humanize .Section | upper  }}</small></h2>
+            <ul class="list-inline">
+              <li class="list-inline-item text-muted">
+                <small>{{ .Date.Format "Mon Jan 2, 2006" }}</small>
+              </li>
+              <li class="list-inline-item text-muted">
+                <small>{{ i18n "WordCount" . }}</small>
+              </li>
+              <li class="list-inline-item text-muted">
+                <small>{{ i18n "ReadingTime" .ReadingTime }}</small>
+              </li>
+            </ul>
+          </header>
+
+          <article>
+            {{ .Content }}
+          </article>
+
+          <nav>
+            {{if .PrevInSection}}
+            <a class="btn btn-outline-primary" href="{{.PrevInSection.Permalink}}">Prev</a>
+            {{ else }}
+            <a class="btn btn-outline-primary disabled" href="#">Prev</a>
+            {{end}}
+
+            {{if .NextInSection}}
+            <a class="btn btn-outline-secondary" href="{{.NextInSection.Permalink}}">Next</a>
+            {{ else }}
+            <a class="btn btn-outline-secondary disabled" href="#">Next</a>
+            {{end}}
+          </nav>
+
+        </section>

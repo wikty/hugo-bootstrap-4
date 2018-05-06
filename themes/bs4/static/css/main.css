@@ -203,3 +203,8 @@ img::-moz-selection {
 .weibo:hover {
   fill: #d8261f;
 }
+
+/* Misc */
+a.active {
+  color: blue;
+}
