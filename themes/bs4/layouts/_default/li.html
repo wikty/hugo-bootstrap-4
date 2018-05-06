@@ -1,0 +1,6 @@
+{{/* The li content view for any sections */}}
+{{/* You may use content views inside of your list templates. Views make this very straightforward by delegating the rendering of each different type of content to the content itself. */}}
+<li>
+  <a href="{{ .Permalink }}">{{ .Title }}</a>
+  <p><small class="text-muted">{{ .Date.Format "Mon, Jan 2, 2006" }}</small></p>
+</li>

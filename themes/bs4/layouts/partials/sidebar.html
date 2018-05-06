@@ -15,7 +15,7 @@
             <h4 class="font-italic">{{ i18n "Tags" . }}</h4>
             <ul class="list-inline">
             {{ range . }}
-              <li class="list-inline-item"><a href="{{ "tags" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+              <li class="list-inline-item"><a href="{{ "tags" | absLangURL }}/{{ . | urlize }}">{{ . }}</a></li>
             {{ end }}
             </ul>
             {{ end }}
@@ -50,7 +50,7 @@
           {{ end }}
 
           {{/* Archives */}}
-          <div class="p-3 mb-3 bg-light rounded">
+          <!-- <div class="p-3 mb-3 bg-light rounded">
             <h4 class="font-italic">{{ i18n "Archives" . }}</h4>
             <ol class="list-unstyled mb-0">
               <li><a href="#">March 2014</a></li>
@@ -66,7 +66,7 @@
               <li><a href="#">May 2013</a></li>
               <li><a href="#">April 2013</a></li>
             </ol>
-          </div>
+          </div> -->
 
           {{/* Socials */}}
           <div class="p-3 mb-3 bg-light rounded">
@@ -75,6 +75,7 @@
               <li><a href="{{$.Site.Params.contact.github}}">GitHub</a></li>
               <li><a href="{{$.Site.Params.contact.twitter}}">Twitter</a></li>
               <li><a href="{{$.Site.Params.contact.facebook}}">Facebook</a></li>
+              <li><a href="{{$.Site.Params.contact.weibo}}">Weibo</a></li>
             </ol>
           </div>
         </aside>

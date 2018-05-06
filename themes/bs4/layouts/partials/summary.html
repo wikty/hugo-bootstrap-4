@@ -1,5 +1,0 @@
-{{ $section_name := .Section }}
-{{ $section_summary := (index $.Site.Params.summary $section_name) | default "media" }}
-{{ $section_summary_tpl := (printf "widgets/summary/%s.html" $section_summary) }}
-
-{{ partial $section_summary_tpl . }}

@@ -1,0 +1,28 @@
+{{/* Any Section lists page */}}
+{{/* .Kind = "section" */}}
+{{ define "main" }}
+<div class="container">
+  <div class="row">
+    <article class="col mx-auto text-center text-muted lead">
+      {{ .Content }}
+    </article>
+  </div>
+  
+  <div class="row">
+    {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
+    <section class="col mx-auto">
+      {{ range  $paginator.Pages }}
+        <div class="mb-2">
+          {{ .Render "summary" }}
+        </div>
+      {{ end }}
+    </section>
+  </div>
+
+  <div class="row">
+    <div class="col mx-auto">
+    {{/* Hugo internal pagination */}}
+    {{ template "_internal/pagination.html" . }}
+    </div>
+  </div>
+{{ end }}

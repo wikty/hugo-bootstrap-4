@@ -65,10 +65,6 @@ theme = "bs4"
   email1 = "nobody@example.com"
   email2 = "anotherbody@example.com"
 
-  # Summary: the summary template for each section
-  [params.summary]
-  posts = "media"
-
   # Navbar Component
   [params.navbar]
   # element id
