@@ -1,13 +1,12 @@
   {{ $id := ($.Param "navbar.id" | default "header-navbar") }}
   {{ $expand := ($.Param "navbar.breakpoint" | default "md") }}
   {{ $bg_mode := ($.Param "navbar.bg_mode" | default "dark") }}
-  {{ $color := ($.Param "navbar.color" | default "white") }}
   {{ $bg_color := ($.Param "navbar.bg_color" | default "dark") }}
   {{ $border_color := ($.Param "navbar.bottom_border_color" |default "") }}
   {{ $brand_img := ($.Param "navbar.brand_img" | default "") }}
   
-  <nav id="{{$id}}" class="fixed-top navbar navbar-expand-{{$expand}} navbar-{{$bg_mode}} bg-{{$bg_color}} text-{{$color}} {{with $border_color}}border-bottom border-{{.}}{{end}}">
-    <a class="navbar-brand text-{{$color}}" href="{{ .Site.BaseURL }}">
+  <nav id="{{$id}}" class="fixed-top navbar navbar-expand-{{$expand}} navbar-{{$bg_mode}} bg-{{$bg_color}} {{with $border_color}}border-bottom border-{{.}}{{end}}">
+    <a class="navbar-brand" href="{{ .Site.BaseURL }}">
       {{ if $brand_img }}
       <img src="{{ (trim $brand_img "/") | absURL }}" width="30" height="30" alt="Site Brand" class="d-inline-block align-top">
       {{ end }}

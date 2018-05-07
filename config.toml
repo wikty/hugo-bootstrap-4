@@ -1,9 +1,52 @@
 baseURL = "http://example.org/"
+title = "My Personal Website"
+copyright = "XXX. All Rights Reserved."
 languageCode = "en-us"
-title = "My New Hugo Site"
+sectionPagesMenu = "main"
 theme = "bs4"
-# metaDataFormat = "toml"
-# paginate = 9
+
+disqusShortname = ""
+googleAnalytics = ""
+
+###
+# MAIN MENU
+#   Note: custome "main" menu items, e.g. changing weight, name, or link title attribute. `identifier` must match the section name
+###
+[[menu.main]]
+  name = "About"
+  title = "About Section"
+  weight = 100
+  identifier = "about"
+  url = "/about/"
+[[menu.main]]
+  name = "TOC"
+  title = "Table Of Content"
+  weight = 90
+  identifier = "toc"
+  url = "/toc/"
+[[menu.main]]
+  name = "Posts"
+  title = "Posts Section"
+  weight = 10
+  identifier = "posts"
+  url = "/posts/"
+
+###
+# TAXONOMY
+#   Note: singular -> plural
+###
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  category = "categories"
+
+###
+# SITEMAP
+###
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [params]
   # Please set enviorment variable HUGO_ENV="production" or change the following configuration when you deploy your site.
@@ -72,12 +115,11 @@ theme = "bs4"
   # responsive breakpoint: xs, sm, md, lg, xl
   breakpoint = "md"
   # https://getbootstrap.com/docs/4.1/utilities/colors/
-  color = "white"
   bg_color = "dark"
+  # background color mode: light, dark
+  bg_mode = "dark"
   # https://getbootstrap.com/docs/4.1/utilities/borders/#border-color
   bottom_border_color = ""
-  # background color mode: light, dark
-  bg_mode = "light"
   # Brand image
   brand_img = ""
 

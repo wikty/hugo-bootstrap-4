@@ -1,0 +1,303 @@
+###
+# SITE BASIC CONFIGURATION
+#   -baseURL
+#     hostname (and path) to the root, e.g. http://example.com/blog/
+#     if deploy on github project pages, maybe is http://your-username.github.io/repo-name/
+#     if deploy on gitlab project pages, maybe is http://your-username.gitlab.io/repo-name/
+#   -metaDataFormat
+#     Hugo support frontmatter format: "toml", "yaml", "json"
+#   -defaultContentLanguage
+#     Content without `language` indicator will default to this language
+#   -hasCJKLanguage
+#     enable auto-detect Chinese/Japanese/Korean Languages in the content. (.Summary and .WordCount can work properly in CJKLanguage)
+#   -sectionPagesMenu
+#     set "main", create a "main" menu with all the sections as menu items and all the sections' pages as "shadow-members".
+#   -preserveTaxonomyNames
+#     set true, don't normalize taxonomy names
+###
+baseURL = "http://example.org/"
+title = "My Personal Website"
+copyright = "XXX. All Rights Reserved."
+languageCode = "en-us"
+metaDataFormat = "toml"
+defaultContentLanguage = "en-us"
+hasCJKLanguage = false
+enableRobotsTXT = true
+sectionPagesMenu = "main"
+preserveTaxonomyNames = true
+theme = "bs4"
+
+###
+# PAGINATOR
+#   -paginate
+#     split the list pages for the homepage, sections and taxonomies into chunks of this size
+#   -paginatePath
+#     used to adapt(prefix) the URL to the pages in the paginator 
+###
+paginate = 9
+paginatePath = "page"
+
+###
+# 3rd-PARTY SERVICES
+#   -disqusShortname
+#     disqus comment
+#   -googleAnalytics
+#     google analytics
+###
+disqusShortname = "blog-wikty-com"
+googleAnalytics = ""
+
+###
+# SYNTAX HIGHLIGHTING
+#   -pygmentsUseClassic
+#     set false, using Chroma instead of Pygments for highlight
+#   -pygmentsStyle
+#     more highlight style: https://help.farbox.com/pygments.html
+#   -pygmentsOptions
+#     highlight options, A comma separated list of options.
+#   -pygmentsCodeFences
+#     Set to true to enable syntax highlighting in code fences with a language tag in markdown
+#   -pygmentsCodeFencesGuessSyntax
+#     Set to true to try to do syntax highlighting on code fenced blocks in markdown without a language tag.
+###
+pygmentsUseClassic = false
+pygmentsStyle = "monokai"
+pygmentsUseClasses = false
+pygmentsOptions = ""
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+
+###
+# MULTILINGUAL
+#   -defaultContentLanguageInSubdir
+#     disable this item, then default content language in `/` path, others in `/en`, `/fr`, `/jp` and so on.
+#   -disableLanguages
+#     disable some languages to render
+#   -enableMissingTranslationPlaceholders
+#     missing translation string will be replaced with `[i18n]`
+###
+defaultContentLanguageInSubdir = false
+disableLanguages = []
+enableMissingTranslationPlaceholders = true
+
+###
+# MAIN MENU
+#   Note: custome "main" menu items, e.g. changing weight, name, or link title attribute. `identifier` must match the section name
+###
+[[menu.main]]
+  name = "About"
+  title = "About Section"
+  weight = 100
+  identifier = "about"
+  url = "/about/"
+[[menu.main]]
+  name = "TOC"
+  title = "Table Of Content"
+  weight = 90
+  identifier = "toc"
+  url = "/toc/"
+[[menu.main]]
+  name = "Posts"
+  title = "Posts Section"
+  weight = 10
+  identifier = "posts"
+  url = "/posts/"
+
+###
+# TAXONOMY
+#   Note: singular -> plural
+###
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  category = "categories"
+
+###
+# RELATED CONTENT
+#   -threshold
+#     Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
+#   -includeNewer
+#     Set to true to include pages newer than the current page in the related content listing.
+#   -toLower
+#     Will lower case keywords in both queries and in the indexes.
+#   -related.indices
+#     indices for related content
+###
+[related]
+  threshold = 80
+  includeNewer = false
+  toLower = false
+[[related.indices]]
+  name = "keywords"
+  weight = 150
+[[related.indices]]
+  name  = "tags"
+  weight = 100
+[[related.indices]]
+  name  = "date"
+  weight = 10
+  pattern = "2006"
+
+###
+# SITEMAP
+###
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+###
+# BLACKFRIDAY MARKDOWN PARSER
+###
+[blackfriday]
+  extensions = ["fencedCode", "strikethrough", "footnotes"]
+
+###
+# MULTILINGUAL CONFIGURATION
+###
+[languages]
+[languages.zh-cn]
+  title = "Wikty's Website"
+  copyright = "XIAO WEN BIN(Wikty) All Rights Reserved."
+  weight = 1
+[languages.zh-cn.params]
+  description = "Life is a playground or nothing."
+[[languages.zh-cn.menu.main]]
+  name = "文章"
+  title = "Posts Section"
+  weight = 50
+  identifier = "posts"
+  url = "/posts/"
+[[languages.zh-cn.menu.main]]
+  name = "目录"
+  title = "目录"
+  weight = 90
+  identifier = "toc"
+  url = "/toc/"
+[[languages.zh-cn.menu.main]]
+  name = "关于"
+  title = "About Section"
+  weight = 100
+  identifier = "about"
+  url = "/about/"
+
+[languages.en]
+  title = "Wikty's Personal Website"
+  copyright = "XIAO WEN BIN(Wikty) All Rights Reserved."
+  weight = 1
+[languages.en.params]
+  description = "Life is a playground or nothing."
+[[languages.en.menu.main]]
+  name = "Posts"
+  title = "Posts Section"
+  weight = 50
+  identifier = "posts"
+  url = "/posts/"
+[[languages.en.menu.main]]
+  name = "TOC"
+  title = "Table Of Content"
+  weight = 90
+  identifier = "toc"
+  url = "/toc/"
+[[languages.en.menu.main]]
+  name = "About"
+  title = "About Section"
+  weight = 100
+  identifier = "about"
+  url = "/about/"
+
+[params]
+  # Please set enviorment variable HUGO_ENV="production" or change the following configuration when you deploy your site.
+  env = "dev"
+  
+  # The favicon icon's url
+  favicon = "favicon.ico"
+  
+  # The Description for your site
+  description = "Life is a playground or nothing."
+  
+  # Page header: jumbotron, hero, carousel
+  page_header = "hero"
+  
+  # The page body element style classes, spearated by space  
+  body_class = ""
+  
+  # Define main sections list
+  main_sections = ["posts", "about"]
+  
+  # Show how many recent posts of each main section
+  recent_posts_number = 10
+  
+  # load 3rd party javascript libaray
+  fixie = true
+  mathjax = false
+  pangu = false
+  typekit = false
+  fontawesome = false
+  holder = false
+  clipboard = true
+
+  # load 3rd party css library
+  simplelineicons = false
+  devicons = false
+
+  # page featured image's url
+  featured_img = ""
+
+  # list how many related pages
+  related_posts_number = 6
+  
+  # page components
+  include_toc = true
+  include_share = true
+  include_comment = true
+  include_sidebar = true
+  
+  # Contact Information
+  [params.contact]
+  facebook = "http://facebook"
+  twitter = "http://twitter"
+  instagram = "http://instagram"
+  youtube = "http://youtubu"
+  linkedin = "http://linkedin"
+  github = "http://github.com"
+  weibo = "http://weibo"
+  email = "nobody@example.com"
+  email1 = "nobody@example.com"
+  email2 = "anotherbody@example.com"
+
+  # Navbar Component
+  [params.navbar]
+  # element id
+  id = "header-navbar"
+  # responsive breakpoint: xs, sm, md, lg, xl
+  breakpoint = "md"
+  # https://getbootstrap.com/docs/4.1/utilities/colors/
+  color = "white"
+  bg_color = "dark"
+  # https://getbootstrap.com/docs/4.1/utilities/borders/#border-color
+  bottom_border_color = ""
+  # background color mode: light, dark
+  bg_mode = "light"
+  # Brand image
+  brand_img = ""
+
+  # Hero header Component
+  [params.hero]
+  # element id
+  id = "header-lead"
+  color = "white"
+  bg_color = "dark"
+  
+  # Jumbotron header Component
+  [params.jumbotron]
+  id = "header-lead"
+  color = ""
+  bg_color = ""
+
+  # Carousel header Component
+  [params.carousel]
+  id = "header-lead"
+  fade = false
+  # specify the section'll be showed on carousel
+  section = "posts"
