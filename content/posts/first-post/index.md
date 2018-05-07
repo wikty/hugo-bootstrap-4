@@ -14,3 +14,5 @@ hello world!
 ## Shortcodes
 
 A {{< tooltip tip="Show tips" >}}Tooltip{{< /tooltip >}} Link. A {{< tooltip tag="button" tip="Show tips" >}}Tooltip{{< /tooltip >}} Button.
+
+A {{< popover title="popover title" content="popover content" >}} Dismiss Popover{{< /popover >}}. A {{< popover type="toggle" title="popover title" content="popover content" >}} Toggle Popover{{< /popover >}}.

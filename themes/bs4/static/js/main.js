@@ -25,3 +25,20 @@ function showTooltipWhenFocus(selector, message, placement='top') {
     }
   });
 }
+
+// Init Popover
+$(function () {
+  // Attaches a toggle popovers
+  // Note: please use .popover-toggle class for the [data-toggle="popover"] 
+  // element
+  $('.popover-toggle').popover({
+    container: 'body'
+  });
+  // Attaches a dismiss popovers
+  // Note: please use .popover-dismiss class for the [data-toggle="popover"] 
+  // element
+  $('.popover-dismiss').popover({
+    trigger: 'focus',
+    container: 'body'
+  });
+});

@@ -1,0 +1,22 @@
+{{/*
+Required Arguments
+title: popover's title
+content: popover's content
+Optional Arguments
+tag: a, button
+type: dismiss, toggle
+direction: top, bottom, left, right
+class: css class
+*/}}
+
+{{- if .IsNamedParams -}}
+  {{ $tag := (.Get "tag")|default "a" }}
+  {{ $direction := (.Get "direction")|default "bottom" }}
+  {{ $type := (.Get "type")|default "dismiss" }}
+
+  {{- if eq $tag "a" -}}
+    <a {{ with .Get "class" }}class="{{ . }}"{{ end }} tabindex="0" role="button" data-toggle="popover" {{ if eq $type "dismiss" }} data-trigger="focus" {{ end }} {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</a>
+  {{- else if eq $tag "button" -}}
+    <button {{ with .Get "class" }}class="{{ . }}"{{ end }} type="button" data-toggle="popover" {{ if eq $type "dismiss" }} data-trigger="focus" {{ end }} {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</button>
+  {{- end -}}
+{{- end -}}

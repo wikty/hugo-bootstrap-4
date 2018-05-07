@@ -5,6 +5,7 @@ Optional Arguments
 tag: a, button
 direction: top, bottom, left, right
 trigger: hover focus, click
+class: css class
 */}}
 {{ if .IsNamedParams }}
   {{ $tag := (.Get "tag")|default "a" }}
@@ -12,11 +13,11 @@ trigger: hover focus, click
   {{ $trigger := (.Get "trigger")|default "" }}
 
   {{ if eq $tag "a" }}
-  <a href="#" data-toggle="tooltip" title="{{ .Get "tip" }}" {{ with $direction }}data-placement="{{ . }}"{{ end }} {{ with $trigger }}data-trigger="{{ . }}"{{ end }}>
+  <a {{ with .Get "class" }}class="{{ . }}"{{ end }} href="#" data-toggle="tooltip" title="{{ .Get "tip" }}" {{ with $direction }}data-placement="{{ . }}"{{ end }} {{ with $trigger }}data-trigger="{{ . }}"{{ end }}>
       {{ .Inner }}
   </a>
   {{ else if eq $tag "button" }}
-  <button type="button" data-toggle="tooltip" title="{{ .Get "tip" }}" {{ with $direction }}data-placement="{{ . }}"{{ end }} {{ with $trigger }}data-trigger="{{ . }}"{{ end }}>
+  <button {{ with .Get "class" }}class="{{ . }}"{{ end }} type="button" data-toggle="tooltip" title="{{ .Get "tip" }}" {{ with $direction }}data-placement="{{ . }}"{{ end }} {{ with $trigger }}data-trigger="{{ . }}"{{ end }}>
       {{ .Inner }}
   </button>
   {{ end }}
