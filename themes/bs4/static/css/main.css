@@ -208,3 +208,7 @@ img::-moz-selection {
 a.active {
   color: blue;
 }
+
+.carousel-caption a {
+  color: #ffffff;
+}

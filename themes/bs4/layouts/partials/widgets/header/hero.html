@@ -1,9 +1,12 @@
 {{ $id := $.Param "hero.id" | default "header-lead" }}
 {{ $color := $.Param "hero.color" | default "white" }}
 {{ $bg_color := $.Param "hero.bg_color" | default "dark" }}
-{{ $bg_img := $.Param "featured_img" | default "" }}
 
-<div id="{{$id}}" class="hero-container bg-{{$bg_color}}" {{ with $bg_img }}style="background-image: url('{{ (trim . "/") | absURL }}');"{{ end }}>
+{{ $bg_img := $.Param "featured_img" | default "" }}
+{{/* adjust featured image url */}}
+{{ partial "utils/relpageurl" (dict "scratch" .Scratch "pageurl" .URL "url" $bg_img "abs" true) }}
+
+<div id="{{$id}}" class="hero-container bg-{{$bg_color}}" {{ with .Scratch.Get "utils.relpageurl" }}style="background-image: url('{{ . }}');"{{ end }}>
   <div class="overlay"></div>
   <div class="container">
     <div class="row">

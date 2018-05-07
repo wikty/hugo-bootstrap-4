@@ -1,0 +1,24 @@
+{{/* Arguments: 
+    scratch, pageurl, url, abs */}}
+{{/* Return: 
+    .Scratch.Get "utils.relpageurl" */}}
+{{- $rtn_key := "utils.relpageurl" -}}
+{{- .scratch.Set $rtn_key "" -}}
+{{- if and .pageurl .url -}}
+    {{- if hasPrefix .url "./" -}}
+        {{ $url := (strings.TrimPrefix "./" .url) }}
+        {{ $suffix := (index (last 1 (split .pageurl "/")) 0) }}
+        {{ $prefix := (strings.TrimSuffix $suffix .pageurl) }}
+        {{- if .abs -}}
+            {{- .scratch.Set $rtn_key ((delimit (slice $prefix $url) "") | absURL) -}}
+        {{- else -}}
+            {{- .scratch.Set $rtn_key (delimit (slice $prefix $url) "") -}}
+        {{- end -}}
+    {{- else -}}
+        {{- if .abs -}}
+            {{- .scratch.Set $rtn_key (.url | absURL) -}}
+        {{- else -}}
+            {{- .scratch.Set $rtn_key .url -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

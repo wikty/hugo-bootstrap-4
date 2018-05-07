@@ -84,7 +84,7 @@ googleAnalytics = ""
   devicons = false
 
   # page featured image's url
-  featured_img = ""
+  featured_img = "img/home-bg.jpg"
 
   # list how many related pages
   related_posts_number = 6
@@ -140,5 +140,7 @@ googleAnalytics = ""
   [params.carousel]
   id = "header-lead"
   fade = false
-  # specify the section'll be showed on carousel
-  section = "posts"
+  # specify the sections'll be showed on carousel
+  sections = ["posts"]
+  # how many posts of each section'll be showed
+  posts_number = 3
