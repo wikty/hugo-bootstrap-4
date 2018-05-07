@@ -59,7 +59,7 @@ googleAnalytics = ""
   description = "Life is a playground or nothing."
   
   # Page header: jumbotron, hero, carousel
-  page_header = "hero"
+  page_header = "jumbotron"
   
   # The page body element style classes, spearated by space  
   body_class = ""

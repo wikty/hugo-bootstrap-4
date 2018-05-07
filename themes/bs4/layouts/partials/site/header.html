@@ -1,4 +1,5 @@
-{{ $header := ($.Param "page_header" | default "hero") }}
-{{ $header_tpl := (printf "widgets/header/%s.html" $header) }}
-
-{{ partial $header_tpl . }}
+{{ $header := ($.Param "page_header") }}
+{{ if $header }}
+    {{ $header_tpl := (printf "widgets/header/%s.html" $header) }}
+    {{ partial $header_tpl . }}
+{{ end }}

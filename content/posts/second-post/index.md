@@ -6,6 +6,7 @@ categories: ["post"]
 tags: ["test"]
 featured_img: "./featured.jpg"
 description: "the description for second post"
+page_header: ""
 ---
 
 hello world again!
