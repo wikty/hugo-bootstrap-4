@@ -10,3 +10,7 @@ page_header: ""
 ---
 
 hello world!
+
+## Shortcodes
+
+A {{< tooltip tip="Show tips" >}}Tooltip{{< /tooltip >}} Link. A {{< tooltip tag="button" tip="Show tips" >}}Tooltip{{< /tooltip >}} Button.
