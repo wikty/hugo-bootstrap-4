@@ -1,0 +1,41 @@
+{{ $title := .Title }}
+{{ $subtitle := .Params.subtitle }}
+{{ $legend := .Params.legend }}
+{{ $description := .Params.description }}
+{{ $date := .Date }}
+{{ $images := .Params.images }}
+{{ $url :=  .URL }}
+
+{{ $img_url := .Params.featured_img | default "" }}
+
+{{/* Note: Variables defined inside if conditionals and similar are not visible on the outside. Please use .Scratch instead. */}}
+{{ if $img_url }}
+  {{ .Scratch.Set "$img_url" $img_url }}
+  {{ if hasPrefix $img_url "./" }}
+    {{ $suffix := index (last 1 (split $url "/")) 0 }}
+    {{ .Scratch.Set "$img_url" (delimit (slice (strings.TrimSuffix $suffix $url) (strings.TrimPrefix "./" $img_url )) "") }}
+  {{ end }}
+  {{ .Scratch.Set "$img_url" (.Scratch.Get "$img_url" | absURL) }}
+{{ end }}
+
+<div class="card shadow p-3">
+  {{ with $legend }}
+  <div class="card-header">{{ . }}</div>
+  {{ end }}
+  {{ with .Scratch.Get "$img_url" }}
+  <img class="card-img-top" src="{{ . }}">
+  {{ end }}
+  <div class="card-body">
+    <h5 class="card-title"><a href="{{ $url }}">{{ $title }}</a></h5>
+    {{ with $subtitle }}
+    <h6 class="card-subtitle mb-2 text-muted">{{ . }}</h6>
+    {{ end }}
+    <p class="card-text">{{ $description }}</p>
+    {{/* <a href="{{ $url }}" class="card-link">Go</a> */}}
+  </div>
+  {{ with $images }}
+  <div class="card-footer">
+    <small class="text-muted">{{ $date.Format "15:04:05, Monday, January 2, 2006" }}</small> - <small class="text-muted"><a href="{{ $url }}">{{ len $images }} Pic</a></small>
+  </div>
+  {{ end }}
+</div>

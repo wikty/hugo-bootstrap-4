@@ -25,6 +25,12 @@ googleAnalytics = ""
   identifier = "toc"
   url = "/toc/"
 [[menu.main]]
+  name = "Gallery"
+  title = "Gallery Section"
+  weight = 20
+  identifier = "gallery"
+  url = "/gallery/"
+[[menu.main]]
   name = "Posts"
   title = "Posts Section"
   weight = 10
@@ -59,7 +65,7 @@ googleAnalytics = ""
   description = "Life is a playground or nothing."
   
   # Page header: jumbotron, hero, carousel
-  page_header = "jumbotron"
+  page_header = ""
   
   # The page body element style classes, spearated by space  
   body_class = ""
@@ -141,6 +147,6 @@ googleAnalytics = ""
   id = "header-lead"
   fade = false
   # specify the sections'll be showed on carousel
-  sections = ["posts"]
+  sections = ["posts", "gallery"]
   # how many posts of each section'll be showed
   posts_number = 3

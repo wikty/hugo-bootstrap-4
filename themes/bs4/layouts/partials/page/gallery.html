@@ -1,0 +1,53 @@
+{{/* Tags Filter
+<!-- Grid row -->
+<div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12 d-flex justify-content-center mb-5">
+
+        <button type="button" class="btn btn-outline-black waves-effect filter" data-rel="all">All</button>
+        <button type="button" class="btn btn-outline-black waves-effect filter" data-rel="1">Mountains</button>
+        <button type="button" class="btn btn-outline-black waves-effect filter" data-rel="2">Sea</button>
+
+    </div>
+    <!-- Grid column -->
+
+</div>
+<!-- Grid row -->
+<script type="text/javascript">
+    $(function() {
+    var selectedClass = "";
+    $(".filter").click(function(){ 
+        selectedClass = $(this).attr("data-rel"); 
+        $(".gallery").fadeTo(100, 0.1);
+        $(".gallery div").not("."+selectedClass).fadeOut().removeClass('animation');
+        setTimeout(function() {
+            $("."+selectedClass).fadeIn().addClass('animation');
+            $(".gallery").fadeTo(300, 1);
+        }, 300); 
+    });
+});
+</script>
+*/}}
+
+{{ $url := .URL }}
+{{ $scratch := .Scratch }}
+
+<!-- Grid row -->
+<div class="gallery">
+
+    {{ $images := (.Params.images | default (slice "")) }}
+    {{ range $i := (seq 0 (len $images)) }}
+    {{ $image := index $images $i }}
+    {{ $caption := index $images $i }}
+
+    {{ if $image }}
+    {{/* adjust image url */}}
+    {{ partial "utils/relpageurl" (dict "scratch" $scratch "pageurl" $url "url" $image "abs" true) }}
+    <!-- Grid column -->
+    <div class="mb-3 pics animation">
+        <img class="img-fluid" src="{{ with $scratch.Get "utils.relpageurl" }}{{ . }}{{ end }}" alt="{{ with $caption }}{{ . }}{{ end }}">
+    </div>
+    {{ end }}
+    {{ end }}
+</div>

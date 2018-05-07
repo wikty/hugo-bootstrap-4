@@ -7,17 +7,17 @@
 <div id="{{$id}}" class="carousel slide {{if $fade}}carousel-fade{{end}}" data-ride="carousel">
 
     <ol class="carousel-indicators">
-    {{ range $section := $sections }}
+    {{ range $section_index, $section := $sections }}
     
       {{ $section_pages := where $.Site.RegularPages "Section" $section }}
       {{ $section_pages := where $section_pages "Params.featured_img" "!=" nil }}
       {{ $section_pages := where $section_pages "Params.featured_img" "!=" "" }}
 
       {{ range $index, $page := (first $posts_number $section_pages) }}
-      {{ if eq $index 0 }}
+      {{ if and (eq $index 0) (eq $section_index 0) }}
       <li data-target="#{{$id}}" data-slide-to="{{$index}}" class="active"></li>
       {{ else }}
-      <li data-target="#{{$id}}" data-slide-to="{{$index}}" class="active"></li>
+      <li data-target="#{{$id}}" data-slide-to="{{$index}}"></li>
       {{ end }}
       {{ end }}
 
@@ -25,7 +25,7 @@
     </ol>
 
     <div class="carousel-inner">
-    {{ range $section := $sections }}
+    {{ range $section_index, $section := $sections }}
     
       {{ $section_pages := where $.Site.RegularPages "Section" $section }}
       {{ $section_pages := where $section_pages "Params.featured_img" "!=" nil }}
@@ -36,7 +36,7 @@
       {{/* adjust featured image url */}}
       {{ partial "utils/relpageurl" (dict "scratch" $scratch "pageurl" $page.URL "url" $page.Params.featured_img "abs" true) }}
       
-      {{ if eq $index 0 }}
+      {{ if and (eq $index 0) (eq $section_index 0) }}
       <div class="carousel-item active">
         <img class="d-block w-100" src="{{ $scratch.Get "utils.relpageurl" }}" alt="{{ $page.Title }}">
         <div class="carousel-caption d-none d-md-block">
