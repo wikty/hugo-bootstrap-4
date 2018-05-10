@@ -1,0 +1,20 @@
+{{/*
+Required Arguments
+value: 0~100
+Optional Arguments
+label: show some information on the bar
+color: bar background color, success, info, danger, warning
+striped: true, false
+animated: true, false
+*/}}
+{{- if .IsNamedParams -}}
+    {{ $color := (.Get "color")|default "" }}
+    {{ $striped := (.Get "striped")|default false }}
+    {{ $animated := (.Get "animated")|default false }}
+    {{ $width := printf "%s%%" (.Get "value") }}
+    {{ $label := (.Get "label")|default $width }}
+
+    <div class="progress" {{ with .Get "height" }}style="height: {{ . }};"{{ end }}>
+      <div class="progress-bar {{ with $color }}bg-{{ . }}{{ end }} {{ with $striped }}progress-bar-striped{{ end }} {{ with $animated }}progress-bar-animated{{end}}" role="progressbar" style="width: {{ $width }};" aria-valuenow="{{ .Get "value" }}" aria-valuemin="0" aria-valuemax="100">{{ $label }}</div>
+    </div>
+{{- end -}}
