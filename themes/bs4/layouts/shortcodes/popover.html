@@ -11,12 +11,12 @@ class: css class
 
 {{- if .IsNamedParams -}}
   {{ $tag := (.Get "tag")|default "a" }}
-  {{ $direction := (.Get "direction")|default "bottom" }}
+  {{ $direction := (.Get "direction")|default "right" }}
   {{ $type := (.Get "type")|default "dismiss" }}
 
   {{- if eq $tag "a" -}}
-    <a {{ with .Get "class" }}class="{{ . }}"{{ end }} tabindex="0" role="button" data-toggle="popover" {{ if eq $type "dismiss" }} data-trigger="focus" {{ end }} {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</a>
+    <a {{ if eq $type "dismiss" }} class="popover-toggle {{ with .Get "class" }}{{.}}{{ end }}" {{ else }} class="popover-dismiss {{ with .Get "class" }}{{.}}{{ end }}" {{ end }} tabindex="0" role="button" data-toggle="popover" {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</a>
   {{- else if eq $tag "button" -}}
-    <button {{ with .Get "class" }}class="{{ . }}"{{ end }} type="button" data-toggle="popover" {{ if eq $type "dismiss" }} data-trigger="focus" {{ end }} {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</button>
+    <button {{ if eq $type "dismiss" }} class="popover-toggle {{ with .Get "class" }}{{.}}{{ end }}" {{ else }} class="popover-dismiss {{ with .Get "class" }}{{.}}{{ end }}" {{ end }} type="button" data-toggle="popover" {{ with .Get "direction" }} data-placement="{{ . }}" {{ end }} title="{{ .Get "title" }}" data-content="{{ .Get "content" }}">{{ .Inner }}</button>
   {{- end -}}
 {{- end -}}
