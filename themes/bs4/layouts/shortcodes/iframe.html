@@ -1,0 +1,12 @@
+{{/*
+Required Arguments
+src: the url of iframe source
+Optional Arguments
+ratio: 1by1, 4by3, 16by9(default), 21by9
+*/}}
+{{- if .IsNamedParams -}}
+    {{ $ratio := (.Get "ratio")|default "16by9" }}
+    <div class="embed-responsive embed-responsive-{{ $ratio }}">
+      <iframe class="embed-responsive-item" src="{{ .Get "src" }}" allowfullscreen></iframe>
+    </div>
+{{- end -}}
