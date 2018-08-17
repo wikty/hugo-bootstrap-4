@@ -3,6 +3,8 @@ Required Arguments
 src: the url of iframe source
 Optional Arguments
 ratio: 1by1, 4by3, 16by9(default), 21by9
+Description:
+Create responsive video or slideshow embeds based on the width of the parent
 */}}
 {{- if .IsNamedParams -}}
     {{ $ratio := (.Get "ratio")|default "16by9" }}
