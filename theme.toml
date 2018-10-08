@@ -8,7 +8,7 @@ description = ""
 homepage = "https://github.com/wikty/hugo-bootstrap-4"
 tags = []
 features = []
-min_version = "0.38"
+min_version = "0.37"
 
 [author]
   name = "Xiao Wenbin"
