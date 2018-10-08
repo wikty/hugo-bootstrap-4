@@ -1,18 +1,18 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "Bs4"
+name = "BS4"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+licenselink = "https://github.com/wikty/hugo-bootstrap-4/blob/master/LICENSE.md"
 description = ""
-homepage = "http://example.com/"
+homepage = "https://github.com/wikty/hugo-bootstrap-4"
 tags = []
 features = []
 min_version = "0.38"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "Xiao Wenbin"
+  homepage = "https://github.com/wikty"
 
 # If porting an existing theme
 [original]
